@@ -5,29 +5,48 @@ namespace Snake_and_Ladder_Program
 {
     class Program
     {
-      
         public const int No_Play = 0;
         public const int Ladder = 1;
         public const int Snake = 2;
+        public const int Start_Player_Position = 0;
+        public const int Winning_Player_Position = 100;
         static void Main(string[] args)
         {
-            Random random = new Random();
-            int RollDice = random.Next(1, 7);
-            int SnakeLadder = random.Next(0, 3);
+            int Position = 0;
             Console.WriteLine("Welcome to Snake & Ladder Game!");
-            Console.WriteLine("Roll the Dice:" +RollDice);
-            Console.WriteLine("Snake Ladder: " + SnakeLadder);
-            switch (SnakeLadder)
+            Console.WriteLine("Start Position of Player: " + Start_Player_Position);
+            for (int Position_Move = Start_Player_Position; Position_Move <= Winning_Player_Position; Position_Move++)
             {
-                case No_Play:
-                   Console.WriteLine("No Play");
-                    break;
-                case Ladder:
-                    Console.WriteLine("The Player moves ahead");
-                    break;
-                case Snake:
-                    Console.WriteLine("The Player moves behind");
-                    break;
+                Random random = new Random();
+                int RollDice = random.Next(1, 7);
+                int SnakeLadder = random.Next(0, 3);
+                Console.WriteLine("Snake Ladder: " + SnakeLadder);
+                switch (SnakeLadder)
+                {
+                    case No_Play:
+                        Console.WriteLine("No Play");
+                        break;
+                    case Ladder:
+                        Console.WriteLine("The Player moves ahead");
+                        Position += RollDice;
+                        break;
+                    case Snake:
+                        Console.WriteLine("The Player moves behind");
+                        Position -= RollDice;
+                        break;
+                }
+                Position_Move = Position;
+                if (Position_Move < Start_Player_Position)
+                {
+                    Position_Move = Start_Player_Position;
+                }
+                else
+                {
+                    Position_Move = Position;
+                }
+                Console.WriteLine("Roll the Dice: " + RollDice);
+                Console.WriteLine("Position of Player: " + Position_Move);
+
             }
         }
 
