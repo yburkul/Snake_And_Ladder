@@ -7,10 +7,10 @@ namespace Snake_and_Ladder_Program
     {
         static void Main(string[] args)
         {
+            Random random = new Random();
+            int RollDice = random.Next(1, 7);
             Console.WriteLine("Welcome to Snake & Ladder Game!");
-            int PlayerPosition = 0;
-            Console.WriteLine("Position of Player: " + PlayerPosition);
-
+            Console.WriteLine("Roll the Dice:" +RollDice);
         }
 
     }
