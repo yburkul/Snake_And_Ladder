@@ -40,12 +40,16 @@ namespace Snake_and_Ladder_Program
                 {
                     Position_Move = Start_Player_Position;
                 }
+                else if (Position_Move > Winning_Player_Position)
+                {
+                    Position_Move = Position - RollDice;
+                }
                 else
                 {
                     Position_Move = Position;
                 }
                 Console.WriteLine("Roll the Dice: " + RollDice);
-                Console.WriteLine("Position of Player: " + Position_Move);
+                Console.WriteLine("Player Win: " + Position_Move);
 
             }
         }
